@@ -29,7 +29,7 @@ To run the project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/typing-speed-test.git
+   git clone https://github.com/ltxstudio/typing-speed-test.git
    cd typing-speed-test
    ```
 
@@ -107,19 +107,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Contact
 
 For any inquiries or feedback, feel free to reach out via [your email](mailto:youremail@example.com).
-
----
-```
-
-### Key Sections:
-- **Overview**: A short description of the project and its purpose.
-- **Features**: List of major features with brief descriptions.
-- **Demo**: Link to a demo if available.
-- **Installation**: Steps to clone and run the project locally.
-- **Usage**: How to use the app, including interaction details.
-- **Technologies Used**: Technologies and libraries used in the project.
-- **Screenshots**: Optional section to include images of the app.
-- **Development**: Information for contributors to set up the project for development.
-- **Future Enhancements**: Potential improvements and new features.
-- **License**: Licensing information, assuming MIT License.
-- **Contact**: Contact information for the developer.
