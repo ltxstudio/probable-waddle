@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { snippets } from "./data/snippets";
-import { Box, Typography, Container, Button, Grid, Switch, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Typography, Container, Grid, Switch, useTheme, useMediaQuery, Divider } from "@mui/material";
 import { motion } from "framer-motion";
+import { Info, Build, Help } from "@mui/icons-material";
 import LanguageSelector from "./components/LanguageSelector";
 import CodeDisplay from "./components/CodeDisplay";
 import TypingArea from "./components/TypingArea";
@@ -51,10 +52,7 @@ const App = () => {
         />
       </Box>
 
-      <LanguageSelector
-        selectedLanguage={language}
-        onChange={handleLanguageChange}
-      />
+      <LanguageSelector selectedLanguage={language} onChange={handleLanguageChange} />
 
       {!wpm ? (
         <motion.div
@@ -87,12 +85,61 @@ const App = () => {
           </Typography>
         </motion.div>
       ) : (
-        <Results
-          wpm={wpm}
-          accuracy={accuracy}
-          onRestart={resetTest}
-        />
+        <Results wpm={wpm} accuracy={accuracy} onRestart={resetTest} />
       )}
+
+      <Divider sx={{ my: 4 }} />
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" sx={{ mb: 2, textAlign: "center" }}>About</Typography>
+        <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
+          <Info sx={{ fontSize: 80, color: "primary.main", mr: 2 }} />
+          <Typography variant="body1" sx={{ textAlign: "center", fontSize: isSmallScreen ? "0.9rem" : "1rem" }}>
+            This is a typing speed test to help you improve your coding typing speed. 
+            Select your preferred programming language and start typing!
+          </Typography>
+        </Box>
+      </Box>
+
+      <Divider sx={{ my: 4 }} />
+
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" sx={{ mb: 2, textAlign: "center" }}>Features</Typography>
+        <Grid container spacing={3} justifyContent="center">
+          <Grid item xs={12} sm={4}>
+            <Box display="flex" justifyContent="center" alignItems="center">
+              <Build sx={{ fontSize: 80, color: "primary.main", mr: 2 }} />
+              <Typography variant="body1" sx={{ fontSize: isSmallScreen ? "0.9rem" : "1rem", textAlign: "center" }}>
+                Multiple Programming Languages<br />
+                JavaScript, Python, C, Java, Go
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Box display="flex" justifyContent="center" alignItems="center">
+              <Help sx={{ fontSize: 80, color: "primary.main", mr: 2 }} />
+              <Typography variant="body1" sx={{ fontSize: isSmallScreen ? "0.9rem" : "1rem", textAlign: "center" }}>
+                Real-time Progress<br />
+                Track your WPM and accuracy as you type
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Divider sx={{ my: 4 }} />
+
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h5" sx={{ mb: 2, textAlign: "center" }}>How to Use</Typography>
+        <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
+          <Help sx={{ fontSize: 80, color: "primary.main", mr: 2 }} />
+          <Typography variant="body1" sx={{ textAlign: "center", fontSize: isSmallScreen ? "0.9rem" : "1rem" }}>
+            1. Select your language from the dropdown.<br />
+            2. Type the code as it appears in the code block.<br />
+            3. Your WPM and accuracy will be tracked in real-time.<br />
+            4. When you finish, your results will be displayed.
+          </Typography>
+        </Box>
+      </Box>
     </Container>
   );
 };
