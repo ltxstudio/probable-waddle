@@ -10,12 +10,12 @@ const CodeDisplay = ({ snippet, language, theme = "light" }) => {
     <Box
       sx={{
         backgroundColor: theme === "dark" ? "#1e1e1e" : "#f4f4f4", // Background color based on theme
-        p: 3,
+        p: { xs: 3, sm: 4, md: 5 }, // Adjust padding based on screen size
         borderRadius: 2,
         mb: 3,
         overflow: "auto",
-        maxHeight: { xs: 250, sm: 400 },  // Responsive max-height for different screen sizes
-        minHeight: 150, // Minimum height to prevent collapsing
+        maxHeight: { xs: 400, sm: 600, md: 800 },  // Increase max height for larger screens
+        minHeight: { xs: 200, sm: 300 }, // Adjust minimum height for smaller devices
         boxShadow: theme === "dark" ? "0 4px 8px rgba(0, 0, 0, 0.3)" : "0 4px 8px rgba(0, 0, 0, 0.1)", // Light shadow
         transition: "all 0.3s ease-in-out", // Smooth transition for hover and background color change
         '&:hover': {
@@ -24,7 +24,14 @@ const CodeDisplay = ({ snippet, language, theme = "light" }) => {
         },
       }}
     >
-      <SyntaxHighlighter language={language} style={codeStyle}>
+      <SyntaxHighlighter 
+        language={language} 
+        style={codeStyle}
+        customStyle={{
+          fontSize: "1rem", // Adjust font size for better readability
+          lineHeight: 1.5,  // Line height for better spacing
+        }}
+      >
         {snippet}
       </SyntaxHighlighter>
     </Box>
