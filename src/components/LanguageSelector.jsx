@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuItem, Select, FormControl, InputLabel, Box } from "@mui/material";
+import { MenuItem, Select, FormControl, InputLabel, Box, Typography } from "@mui/material";
 import { Code as CodeIcon, Python, Java, Language as LanguageIcon } from "@mui/icons-material";
 
 const LanguageSelector = ({ selectedLanguage, onChange }) => {
@@ -26,9 +26,29 @@ const LanguageSelector = ({ selectedLanguage, onChange }) => {
         }}
       >
         {languages.map(({ label, value, icon }) => (
-          <MenuItem key={value} value={value} sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ mr: 2 }}>{icon}</Box> {/* Language Icon */}
-            {label}
+          <MenuItem 
+            key={value} 
+            value={value} 
+            sx={{
+              display: "flex", 
+              alignItems: "center", 
+              px: { xs: 1, sm: 2 }, // Adjust padding for responsiveness
+              py: { xs: 1, sm: 1.5 }, // Adjust padding for responsiveness
+            }}
+          >
+            <Box 
+              sx={{
+                mr: 2, 
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                width: { xs: 24, sm: 28 }, // Responsive icon size
+                height: { xs: 24, sm: 28 }, // Responsive icon size
+              }}
+            >
+              {icon}
+            </Box>
+            <Typography variant="body1">{label}</Typography>
           </MenuItem>
         ))}
       </Select>
