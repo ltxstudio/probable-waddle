@@ -1,6 +1,6 @@
 import React from "react";
 import { MenuItem, Select, FormControl, InputLabel, Box } from "@mui/material";
-import { Code as CodeIcon, JavaScript, Python, CSharp, Java, Language as LanguageIcon } from "@mui/icons-material";
+import { Code as CodeIcon, JavaScript, Python, Java, Language as LanguageIcon } from "@mui/icons-material";
 
 const LanguageSelector = ({ selectedLanguage, onChange }) => {
   // Define the available languages along with their icons
