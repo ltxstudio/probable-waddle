@@ -1,54 +1,43 @@
 import React from "react";
-import { MenuItem, Select, FormControl, InputLabel, Box, Typography } from "@mui/material";
-import { Code as CodeIcon, Python, Java, Language as LanguageIcon } from "@mui/icons-material";
+import { MenuItem, Select, FormControl, InputLabel } from "@mui/material";
 
 const LanguageSelector = ({ selectedLanguage, onChange }) => {
-  // Define the available languages along with their icons
-  const languages = [
-    { label: "JavaScript", value: "javascript", icon: <CodeIcon /> }, // Use CodeIcon for JavaScript
-    { label: "Python", value: "python", icon: <Python /> },
-    { label: "C", value: "c", icon: <CodeIcon /> }, // Use CodeIcon for C
-    { label: "Java", value: "java", icon: <Java /> },
-    { label: "Go", value: "go", icon: <LanguageIcon /> }, // Use LanguageIcon for Go
-  ];
+  const languages = ["javascript", "python", "c", "java", "go"];
 
   return (
-    <FormControl fullWidth sx={{ my: 3 }}>
-      <InputLabel>Select Language</InputLabel>
+    <FormControl
+      fullWidth
+      sx={{
+        my: 3,
+        // Adding responsive margin and padding
+        "@media (max-width: 600px)": {
+          my: 2, // smaller margin on mobile screens
+        },
+      }}
+    >
+      <InputLabel
+        sx={{
+          fontSize: { xs: "14px", sm: "16px" }, // Smaller font size on mobile
+        }}
+      >
+        Select Language
+      </InputLabel>
       <Select
         value={selectedLanguage}
         onChange={(e) => onChange(e.target.value)}
         label="Select Language"
         sx={{
-          backgroundColor: "#fafafa", // Set background color
-          fontSize: { xs: "14px", sm: "16px" }, // Adjust font size for responsiveness
-          "& .MuiSelect-icon": { fontSize: { xs: 22, sm: 24 } }, // Icon size responsiveness
+          fontSize: { xs: "14px", sm: "16px" }, // Smaller font size on mobile
+          padding: { xs: "8px", sm: "12px" },  // Responsive padding
+          backgroundColor: "#f5f5f5",          // Light background color
+          "& .MuiSelect-icon": {
+            fontSize: { xs: 20, sm: 24 },      // Adjust icon size based on screen size
+          },
         }}
       >
-        {languages.map(({ label, value, icon }) => (
-          <MenuItem 
-            key={value} 
-            value={value} 
-            sx={{
-              display: "flex", 
-              alignItems: "center", 
-              px: { xs: 1, sm: 2 }, // Adjust padding for responsiveness
-              py: { xs: 1, sm: 1.5 }, // Adjust padding for responsiveness
-            }}
-          >
-            <Box 
-              sx={{
-                mr: 2, 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center', 
-                width: { xs: 24, sm: 28 }, // Responsive icon size
-                height: { xs: 24, sm: 28 }, // Responsive icon size
-              }}
-            >
-              {icon}
-            </Box>
-            <Typography variant="body1">{label}</Typography>
+        {languages.map((lang) => (
+          <MenuItem key={lang} value={lang}>
+            {lang.toUpperCase()}
           </MenuItem>
         ))}
       </Select>
