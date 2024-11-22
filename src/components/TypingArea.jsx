@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import classNames from "classnames";
-import { TextField, LinearProgress } from "@mui/material";
+import { TextField, LinearProgress, Box } from "@mui/material";
 
 const TypingArea = ({ snippet, onProgress, onComplete }) => {
   const [input, setInput] = useState("");
@@ -36,7 +35,7 @@ const TypingArea = ({ snippet, onProgress, onComplete }) => {
   };
 
   return (
-    <div className="typing-area">
+    <Box>
       <TextField
         value={input}
         onChange={handleChange}
@@ -45,14 +44,14 @@ const TypingArea = ({ snippet, onProgress, onComplete }) => {
         rows={6}
         variant="outlined"
         placeholder="Start typing here..."
-        className={classNames("text-input", { error: errorCount > 0 })}
+        sx={{ mb: 2 }}
       />
       <LinearProgress
         variant="determinate"
         value={(input.length / snippet.length) * 100}
-        className="progress-bar"
+        sx={{ height: 10 }}
       />
-    </div>
+    </Box>
   );
 };
 
