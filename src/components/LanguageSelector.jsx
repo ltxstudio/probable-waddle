@@ -1,15 +1,15 @@
 import React from "react";
 import { MenuItem, Select, FormControl, InputLabel, Box } from "@mui/material";
-import { Code as CodeIcon, JavaScript, Python, Java, Language as LanguageIcon } from "@mui/icons-material";
+import { Code as CodeIcon, Python, Java, Language as LanguageIcon } from "@mui/icons-material";
 
 const LanguageSelector = ({ selectedLanguage, onChange }) => {
   // Define the available languages along with their icons
   const languages = [
-    { label: "JavaScript", value: "javascript", icon: <JavaScript /> },
+    { label: "JavaScript", value: "javascript", icon: <CodeIcon /> }, // Use CodeIcon for JavaScript
     { label: "Python", value: "python", icon: <Python /> },
-    { label: "C", value: "c", icon: <CodeIcon /> },
+    { label: "C", value: "c", icon: <CodeIcon /> }, // Use CodeIcon for C
     { label: "Java", value: "java", icon: <Java /> },
-    { label: "Go", value: "go", icon: <LanguageIcon /> },
+    { label: "Go", value: "go", icon: <LanguageIcon /> }, // Use LanguageIcon for Go
   ];
 
   return (
