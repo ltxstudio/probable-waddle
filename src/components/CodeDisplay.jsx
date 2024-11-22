@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vsDark } from "react-syntax-highlighter/dist/esm/styles/hljs"; // A professional dark theme
+import { vsDark, docco } from "react-syntax-highlighter/dist/esm/styles/hljs"; // Import both themes: vsDark and docco
 
 const CodeDisplay = ({ snippet, language, theme = "light" }) => {
   const codeStyle = theme === "dark" ? vsDark : docco;  // Professional dark theme for dark mode, docco for light mode
