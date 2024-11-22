@@ -1,23 +1,24 @@
 import React from "react";
-import classNames from "classnames";
+import { Box } from "@mui/material";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import { docco, dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { docco, dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-const CodeDisplay = ({ snippet, language, theme }) => {
+const CodeDisplay = ({ snippet, language }) => {
   return (
-    <div
-      className={classNames("code-display", {
-        "dark-theme": theme === "dark",
-        "light-theme": theme === "light",
-      })}
+    <Box
+      sx={{
+        backgroundColor: "#f4f4f4",
+        p: 2,
+        borderRadius: 2,
+        mb: 3,
+        overflow: "auto",
+        maxHeight: 200,
+      }}
     >
-      <SyntaxHighlighter
-        language={language}
-        style={theme === "dark" ? dracula : docco}
-      >
+      <SyntaxHighlighter language={language} style={docco}>
         {snippet}
       </SyntaxHighlighter>
-    </div>
+    </Box>
   );
 };
 
