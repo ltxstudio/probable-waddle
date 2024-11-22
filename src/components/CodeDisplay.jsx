@@ -1,37 +1,31 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vsDark, docco } from "react-syntax-highlighter/dist/esm/styles/hljs"; // Import both themes: vsDark and docco
+import { docco, dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const CodeDisplay = ({ snippet, language, theme = "light" }) => {
-  const codeStyle = theme === "dark" ? vsDark : docco;  // Professional dark theme for dark mode, docco for light mode
+  const codeStyle = theme === "dark" ? dark : docco;  // Dynamic style selection
 
   return (
     <Box
       sx={{
         backgroundColor: theme === "dark" ? "#1e1e1e" : "#f4f4f4", // Background color based on theme
-        p: { xs: 3, sm: 4, md: 5 }, // Adjust padding based on screen size
+        p: 3, // Increased padding for better readability
         borderRadius: 2,
         mb: 3,
         overflow: "auto",
-        maxHeight: { xs: 400, sm: 600, md: 800 },  // Increase max height for larger screens
-        minHeight: { xs: 200, sm: 300 }, // Adjust minimum height for smaller devices
+        maxHeight: { xs: 200, sm: 350, md: 450 },  // Responsive max-height with larger devices
         boxShadow: theme === "dark" ? "0 4px 8px rgba(0, 0, 0, 0.3)" : "0 4px 8px rgba(0, 0, 0, 0.1)", // Light shadow
-        transition: "all 0.3s ease-in-out", // Smooth transition for hover and background color change
+        border: theme === "dark" ? "1px solid #333" : "1px solid #ddd", // Border color based on theme
         '&:hover': {
           boxShadow: theme === "dark" ? "0 4px 12px rgba(0, 0, 0, 0.5)" : "0 4px 12px rgba(0, 0, 0, 0.2)", // Hover shadow effect
-          transform: "scale(1.02)", // Slight zoom-in effect on hover
+        },
+        '@media (max-width:600px)': {
+          maxHeight: 250, // Adjust height for small screens
         },
       }}
     >
-      <SyntaxHighlighter 
-        language={language} 
-        style={codeStyle}
-        customStyle={{
-          fontSize: "1rem", // Adjust font size for better readability
-          lineHeight: 1.5,  // Line height for better spacing
-        }}
-      >
+      <SyntaxHighlighter language={language} style={codeStyle}>
         {snippet}
       </SyntaxHighlighter>
     </Box>
